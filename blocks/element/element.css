@@ -1,9 +1,10 @@
 .element {
+  list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #fff;
   display: grid;
-  grid-template-rows: 282px 79px;
-  border-radius: 5%;
-  overflow: hidden;
-}
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-column-gap: 17px;
+  grid-template-rows: repeat(auto-fit, 361px);
+  grid-row-gap: 20px;
+}  
