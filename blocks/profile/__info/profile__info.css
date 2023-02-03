@@ -4,6 +4,7 @@
   padding: 0;
   max-width: 336px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 @media screen and (max-width: 767px) {

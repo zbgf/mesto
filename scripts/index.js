@@ -3,13 +3,15 @@ let open = document.querySelector('.profile__edit');
 let close = document.querySelector('.popup__close');
 let profileName = document.querySelector('.profile__name');
 let profileAbout = document.querySelector('.profile__about');
-let formElement = document.querySelector('.popup__main');
-let nameInput = formElement.querySelector('.popup__name');
-let aboutInput = formElement.querySelector('.popup__about');
+let formElement = document.querySelector('.popup__form');
+let nameInput = formElement.querySelector('.popup__input_type_name');
+let aboutInput = formElement.querySelector('.popup__input_type_about');
 
 
 function openPopup () {
   popup.classList.add('popup__open');
+  nameInput.value = profileName.textContent;
+  aboutInput.value = profileAbout.textContent;
 }
 
 function closePopup () {

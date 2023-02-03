@@ -3,9 +3,11 @@
   height: 24px;
   margin: 0;
   padding: 0;
-  background: url(../../../images/profile/button.jpg) no-repeat center;
+  background: url(../../../images/profile/edit.svg) no-repeat center;
   background-size: 10px;
   border: 1px solid #fff;
+  align-items: center;
+  
 }
 
 @media screen and (max-width: 767px) {
