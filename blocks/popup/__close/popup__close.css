@@ -15,5 +15,7 @@
     width: 20px;
     height: 20px;
     right: 0;
+    top: -35px;
+    background: url(../../../images/popup/CloseIconMobile.svg) no-repeat center;
   }
 }
