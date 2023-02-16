@@ -27,53 +27,7 @@
 
     <section class="elements">
       <ul class="element">
-        <li class="element__list">
-          <img class="element__image" src="./images/elements/1.jpg" alt="Карачаевск">
-          <div class="element__header">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
 
-        <li class="element__list">
-          <img class="element__image" src="./images/elements/2.jpg" alt="Гора Эльбрус">
-          <div class="element__header">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="element__list">
-          <img class="element__image" src="./images/elements/3.jpg" alt="Домбай">
-          <div class="element__header">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="element__list">
-          <img class="element__image" src="./images/elements/2.jpg" alt="Гора Эльбрус">
-          <div class="element__header">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="element__list">
-          <img class="element__image" src="./images/elements/3.jpg" alt="Домбай">
-          <div class="element__header">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="element__list">
-          <img class="element__image" src="./images/elements/1.jpg" alt="Карачаево-Черкесия">
-          <div class="element__header">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
       </ul>
     </section>
     
@@ -83,17 +37,41 @@
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
-    <div class="popup__container">
-      <button class="popup__close button" type="button"></button>
-      <form class="popup__form" name="profile-form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input popup__input_type_name" type="text" name="name">
-        <input class="popup__input popup__input_type_about" type="text" name="about">
-        <button class="popup__save" type="submit">Сохранить</button>
+  <div class="popupEdit">
+    <div class="popupEdit__container">
+      <button class="popupEdit__close button" type="button"></button>
+      <form class="popupEdit__form" name="edit-form">
+        <h2 class="popupEdit__title">Редактировать профиль</h2>
+        <input class="popupEdit__input popupEdit__input_type_name" type="text" name="name">
+        <input class="popupEdit__input popupEdit__input_type_about" type="text" name="about">
+        <button class="popupEdit__save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
+
+  <div class="popupAdd">
+    <div class="popupAdd__container">
+      <button class="popupAdd__close button" type="button"></button>
+      <form class="popupAdd__form" name="add-form">
+        <h2 class="popupAdd__title">Новое место</h2>
+        <input class="popupAdd__input popupAdd__input_type_place" type="text" name="place" placeholder="Название">
+        <input class="popupAdd__input popupAdd__input_type_link" type="text" name="link" placeholder="Ссылка на картинку">
+        <button class="popupAdd__add" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <template id="element-template">
+    <li class="element__list">
+      <button class="element__trash button" type="button"></button>
+      <img src="#" class="element__image" alt="картинка">
+      <div class="element__header">
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button"></button>
+      </div>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>

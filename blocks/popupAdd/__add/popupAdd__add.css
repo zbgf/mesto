@@ -1,4 +1,4 @@
-.popup__save {
+.popupAdd__add {
   margin: 20px 0 0;
   padding: 0;
   width: 358px;
@@ -14,13 +14,13 @@
   border-radius: 2px;
 }
 
-.popup__save:hover {
+.popupAdd__add:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
-  .popup__save {
+  .popupAdd__add {
     width: 238px;
     height: 46px;
     font-size: 14px;
