@@ -37,7 +37,7 @@
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popupEdit">
+  <div class="popup popupEdit">
     <div class="popupEdit__container">
       <button class="popupEdit__close button" type="button"></button>
       <form class="popupEdit__form" name="edit-form">
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div class="popupAdd">
+  <div class="popup popupAdd">
     <div class="popupAdd__container">
       <button class="popupAdd__close button" type="button"></button>
       <form class="popupAdd__form" name="add-form">
@@ -71,6 +71,14 @@
       </div>
     </li>
   </template>
+
+  <div class="popup popupImage">
+    <div class="popupImage__container">
+      <button class="popupImage__close button" type="button"></button>
+      <img class="popupImage__image" src="#" alt="картинка">
+      <p class="popupImage__place"></p>
+    </div>
+  </div>
 
   <script src="./scripts/index.js"></script>
 </body>

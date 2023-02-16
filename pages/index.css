@@ -30,7 +30,6 @@
 @import url(../blocks/popupEdit/__save/popupEdit__save.css);
 @import url(../blocks/popupEdit/__title/popupEdit__title.css);
 @import url(../blocks/popupEdit/popupEdit.css);
-@import url(../blocks/popupEdit/_opened/popupEdit_opened.css);
 @import url(../blocks/popupAdd/__add/popupAdd__add.css);
 @import url(../blocks/popupAdd/__close/popupAdd__close.css);
 @import url(../blocks/popupAdd/__container/popupAdd__container.css);
@@ -39,3 +38,13 @@
 @import url(../blocks/popupAdd/__title/popupAdd__title.css);
 @import url(../blocks/popupAdd/popupAdd.css);
 @import url(../blocks/popupAdd/_opened/popupAdd_opened.css);
+@import url(../blocks/popupEdit/_opened/popupEdit_opened.css);
+
+@import url(../blocks/popupImage/__close/popupImage__close.css);
+@import url(../blocks/popupImage/__container/popupImage__container.css);
+@import url(../blocks/popupImage/__image/popupImage__image.css);
+@import url(../blocks/popupImage/__place/popupImage__place.css);
+
+@import url(../blocks/popupImage/popupImage.css);
+
+@import url(../blocks/popupImage/_opened/popupImage_opened.css);

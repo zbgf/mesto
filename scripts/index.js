@@ -29,12 +29,11 @@ openEdit.addEventListener('click', openPopup);
 closeEdit.addEventListener('click', closePopup);
 formElement.addEventListener('submit', handleFormSubmit);
 
-
 //изменение элементов
 let popupAdd = document.querySelector('.popupAdd');
 let formElementAdd = document.querySelector('.popupAdd__form');
 let openAdd = document.querySelector('.profile__add');
-let closeAdd = document.querySelector('.popupAdd__close')
+let closeAdd = document.querySelector('.popupAdd__close');
 let placeElement = formElementAdd.querySelector('.popupAdd__input_type_place');
 let linkElement = formElementAdd.querySelector('.popupAdd__input_type_link');
 let elementList = document.querySelector('.element');
@@ -56,17 +55,13 @@ function create (element) {
   copyElement.querySelector('.element__title').textContent = element.place;
   copyElement.querySelector('.element__image').src = element.link;
   //удаление элементов
-  copyElement.querySelector('.element__trash').addEventListener('click', function (elementDelete) {
-    elementDelete.target.closest('.element__list').remove();
-  });
+  copyElement.querySelector('.element__trash').addEventListener('click', function (elementDelete) {elementDelete.target.closest('.element__list').remove();});
   //добавление лайков
-  copyElement.querySelector('.element__like').addEventListener('click', function (elementLike) {
-    elementLike.target.classList.toggle('element__like_active');
-  });
+  copyElement.querySelector('.element__like').addEventListener('click', function (elementLike) {elementLike.target.classList.toggle('element__like_active');});
   return copyElement;
 }
 
-function handleElementSubmit(evt) {
+function handleElementSubmit (evt) {
   evt.preventDefault();
   let newElement = {};
   newElement.place = placeElement.value;
@@ -108,6 +103,26 @@ const initialCards = [
 function initialElements (element) {
   let initialElement = create(element);
   elementList.prepend(initialElement);
-}
+};
 
 initialCards.forEach(initialElements);
+
+//открытие картинки
+let popupImage = document.querySelector('.popupImage');
+let openImage = document.querySelector('.element__image');
+let closeImage = document.querySelector('.popupImage__close');
+let popupImagePlace = document.querySelector('.popupImage__place');
+let popupImageImage = document.querySelector('.popupImage__image');
+let elementTitle = document.querySelector('.element__title');
+
+function openPopupImage () {
+  popupImage.classList.add('popupImage_opened');
+  popupImageImage.src = openImage.src;
+  popupImagePlace.textContent = elementTitle.textContent;
+}
+function closePopupImage () {
+  popupImage.classList.remove('popupImage_opened');
+}
+
+openImage.addEventListener('click', openPopupImage);
+closeImage.addEventListener('click', closePopupImage);
