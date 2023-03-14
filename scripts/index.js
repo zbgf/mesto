@@ -4,8 +4,8 @@ const openEdit = document.querySelector('.profile__edit');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const formElement = document.querySelector('.popupEdit__form');
-const nameInput = formElement.querySelector('.popupEdit__input_type_name');
-const aboutInput = formElement.querySelector('.popupEdit__input_type_about');
+const nameInput = formElement.querySelector('.popup__input_type_name');
+const aboutInput = formElement.querySelector('.popup__input_type_about');
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
@@ -35,8 +35,8 @@ formElement.addEventListener('submit', handleFormSubmit);
 const popupAdd = document.querySelector('.popupAdd');
 const formElementAdd = document.querySelector('.popupAdd__form');
 const openAdd = document.querySelector('.profile__add');
-const placeElement = formElementAdd.querySelector('.popupAdd__input_type_place');
-const linkElement = formElementAdd.querySelector('.popupAdd__input_type_link');
+const placeElement = formElementAdd.querySelector('.popup__input_type_place');
+const linkElement = formElementAdd.querySelector('.popup__input_type_link');
 const elementList = document.querySelector('.element');
 const elementTemplate = document.querySelector('#element-template');
 const popupImage = document.querySelector('.popupImage');
