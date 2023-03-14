@@ -39,24 +39,24 @@
 
   <div class="popup popupEdit">
     <div class="popupEdit__container">
-      <button class="popupEdit__close button" type="button"></button>
-      <form class="popupEdit__form" name="edit-form">
+      <button class="button popup__close" type="button"></button>
+      <form class="popupEdit__form popup__form" name="edit-form">
         <h2 class="popupEdit__title">Редактировать профиль</h2>
-        <input class="popupEdit__input popupEdit__input_type_name" type="text" name="name">
-        <input class="popupEdit__input popupEdit__input_type_about" type="text" name="about">
-        <button class="popupEdit__save" type="submit">Сохранить</button>
+        <input class="popup__input popupEdit__input_type_name" type="text" name="name">
+        <input class="popup__input popupEdit__input_type_about" type="text" name="about">
+        <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
 
   <div class="popup popupAdd">
     <div class="popupAdd__container">
-      <button class="popupAdd__close button" type="button"></button>
-      <form class="popupAdd__form" name="add-form">
+      <button class="button popup__close" type="button"></button>
+      <form class="popupAdd__form popup__form" name="add-form">
         <h2 class="popupAdd__title">Новое место</h2>
-        <input class="popupAdd__input popupAdd__input_type_place" type="text" name="place" placeholder="Название">
-        <input class="popupAdd__input popupAdd__input_type_link" type="text" name="link" placeholder="Ссылка на картинку">
-        <button class="popupAdd__add" type="submit">Создать</button>
+        <input class="popup__input popupAdd__input_type_place" type="text" name="place" placeholder="Название">
+        <input class="popup__input popupAdd__input_type_link" type="text" name="link" placeholder="Ссылка на картинку">
+        <button class="popup__button" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -74,7 +74,7 @@
 
   <div class="popup popupImage">
     <div class="popupImage__container">
-      <button class="popupImage__close button" type="button"></button>
+      <button class="button popup__close" type="button"></button>
       <img class="popupImage__image" src="#" alt="картинка">
       <p class="popupImage__place"></p>
     </div>
