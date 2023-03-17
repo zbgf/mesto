@@ -46,7 +46,7 @@ const popupImageImage = document.querySelector('.popupImage__image');
 openAdd.addEventListener('click', () => openPopup(popupAdd));
 
 function create (element) {
-  let copyElement = elementTemplate.content.cloneNode('true');
+  const copyElement = elementTemplate.content.cloneNode('true');
   copyElement.querySelector('.element__title').textContent = element.place;
   copyElement.querySelector('.element__image').src = element.link;
   copyElement.querySelector('.element__image').alt = element.place;
@@ -67,7 +67,7 @@ function create (element) {
 
 function handleElementSubmit (evt) {
   evt.preventDefault();
-  let newElement = {};
+  const newElement = {};
   newElement.place = placeElement.value;
   newElement.link = linkElement.value;
   elementList.prepend(create(newElement));
@@ -106,7 +106,7 @@ const initialCards = [
 ]; 
 
 function initialElements (element) {
-  let initialElement = create(element);
+  const initialElement = create(element);
   elementList.prepend(initialElement);
 };
 
