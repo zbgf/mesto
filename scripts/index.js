@@ -9,10 +9,12 @@ const aboutInput = formElement.querySelector('.popup__input_type_about');
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', closePopupEsc);
 }
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', closePopupEsc);
 }
 
 function openPopupEdit () {
@@ -121,3 +123,18 @@ closeButtons.forEach((button) => {
   // устанавливаем обработчик закрытия на крестик
   button.addEventListener('click', () => closePopup(popup));
 });
+
+function closePopupEsc (evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+};
+
+function closePopupOutside (evt) {
+  if (evt.target.classList.contains('popup')) {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+document.addEventListener('click', closePopupOutside);
