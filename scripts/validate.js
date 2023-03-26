@@ -19,21 +19,21 @@ function checkValidity (formElement, input, config) {
   }
 };
 
-function buttonOn (button, config) {
+function enableButton (button, config) {
   button.classList.remove(config.invalidSubmitButtonClass);
   button.disabled = false;
 }
 
-function buttonOff (button, config) {
+function disableButton (button, config) {
   button.classList.add(config.invalidSubmitButtonClass);
   button.disabled = true;
 }
 
 function toggleButton (inputList, button, config) {
   if (hasInvalidInput(inputList)) {
-    buttonOff (button, config)
+    disableButton (button, config)
   } else {
-    buttonOn (button, config)
+    enableButton (button, config)
   }
 }
 

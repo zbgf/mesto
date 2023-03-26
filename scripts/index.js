@@ -1,11 +1,11 @@
 //изменение имени
 const popupEdit = document.querySelector('.popupEdit');
-const openEdit = document.querySelector('.profile__edit');
+const buttonOpenEdit = document.querySelector('.profile__edit');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
-const formElement = document.querySelector('.popupEdit__form');
-const nameInput = formElement.querySelector('.popup__input_type_name');
-const aboutInput = formElement.querySelector('.popup__input_type_about');
+const formProfileEdit = document.querySelector('.popupEdit__form');
+const nameInput = formProfileEdit.querySelector('.popup__input_type_name');
+const aboutInput = formProfileEdit.querySelector('.popup__input_type_about');
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
@@ -30,13 +30,13 @@ function handleFormSubmit (evt) {
   closePopup (popupEdit);
 }
 
-openEdit.addEventListener('click', openPopupEdit);
-formElement.addEventListener('submit', handleFormSubmit);
+buttonOpenEdit.addEventListener('click', openPopupEdit);
+formProfileEdit.addEventListener('submit', handleFormSubmit);
 
 //изменение элементов
 const popupAdd = document.querySelector('.popupAdd');
 const formElementAdd = document.querySelector('.popupAdd__form');
-const openAdd = document.querySelector('.profile__add');
+const buttonOpenAdd = document.querySelector('.profile__add');
 const placeElement = formElementAdd.querySelector('.popup__input_type_place');
 const linkElement = formElementAdd.querySelector('.popup__input_type_link');
 const elementList = document.querySelector('.element');
@@ -45,35 +45,37 @@ const popupImage = document.querySelector('.popupImage');
 const popupImagePlace = document.querySelector('.popupImage__place');
 const popupImageImage = document.querySelector('.popupImage__image');
 
-openAdd.addEventListener('click', () => openPopup(popupAdd));
+buttonOpenAdd.addEventListener('click', () => openPopup(popupAdd));
 
 function create (element) {
-  const copyElement = elementTemplate.content.cloneNode('true');
-  copyElement.querySelector('.element__title').textContent = element.place;
-  copyElement.querySelector('.element__image').src = element.link;
-  copyElement.querySelector('.element__image').alt = element.place;
+  const elementCopy = elementTemplate.content.cloneNode('true');
+  elementCopy.querySelector('.element__title').textContent = element.name;
+  elementCopy.querySelector('.element__image').src = element.link;
+  elementCopy.querySelector('.element__image').alt = element.name;
   //удаление элементов
-  copyElement.querySelector('.element__trash').addEventListener('click', function (elementDelete) {elementDelete.target.closest('.element__list').remove();});
+  elementCopy.querySelector('.element__trash').addEventListener('click', function (elementDelete) {elementDelete.target.closest('.element__list').remove();});
   //добавление лайков
-  copyElement.querySelector('.element__like').addEventListener('click', function (elementLike) {elementLike.target.classList.toggle('element__like_active');});
+  elementCopy.querySelector('.element__like').addEventListener('click', function (elementLike) {elementLike.target.classList.toggle('element__like_active');});
   //открытие картинки
-  copyElement.querySelector('.element__image').addEventListener('click', function () {
+  elementCopy.querySelector('.element__image').addEventListener('click', function () {
     openPopup(popupImage);
-    popupImagePlace.textContent = element.place;
+    popupImagePlace.textContent = element.name;
     popupImageImage.src = element.link;
-    popupImageImage.alt = element.place;
+    popupImageImage.alt = element.name;
   });
 
-  return copyElement;
+  return elementCopy;
 }
 
 function handleElementSubmit (evt) {
   evt.preventDefault();
-  const newElement = {};
-  newElement.place = placeElement.value;
-  newElement.link = linkElement.value;
-  elementList.prepend(create(newElement));
+  const elementNew = {};
+  elementNew.name = placeElement.value;
+  elementNew.link = linkElement.value;
+  elementList.prepend(create(elementNew));
   evt.target.reset();
+  evt.submitter.classList.add('popup__button_inactive');
+  evt.submitter.disabled = true; 
   closePopup(popupAdd);
 }
 
@@ -82,27 +84,27 @@ formElementAdd.addEventListener('submit', handleElementSubmit);
 //добавление начальных элементов
 const initialCards = [
   {
-    place: 'Архыз',
+    name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    place: 'Челябинская область',
+    name: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    place: 'Иваново',
+    name: 'Иваново',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    place: 'Камчатка',
+    name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    place: 'Холмогорский район',
+    name: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    place: 'Байкал',
+    name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ]; 
@@ -115,9 +117,9 @@ function initialElements (element) {
 initialCards.forEach(initialElements);
 
 // находим все крестики проекта по универсальному селектору
-const closeButtons = document.querySelectorAll('.popup__close');
+const buttonClose = document.querySelectorAll('.popup__close');
 
-closeButtons.forEach((button) => {
+buttonClose.forEach((button) => {
   // находим 1 раз ближайший к крестику попап 
   const popup = button.closest('.popup');
   // устанавливаем обработчик закрытия на крестик
@@ -137,4 +139,7 @@ function closePopupOutside (evt) {
     closePopup(popupOpened);
   }
 }
-document.addEventListener('click', closePopupOutside);
+
+popupEdit.addEventListener('click', closePopupOutside);
+popupAdd.addEventListener('click', closePopupOutside);
+popupImage.addEventListener('click', closePopupOutside);
