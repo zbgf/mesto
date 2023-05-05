@@ -1,3 +1,6 @@
+import {Card} from "./card.js";
+import {FormValidator} from "./formValidator.js";
+
 //изменение имени
 const popupEdit = document.querySelector('.popupEdit');
 const buttonOpenEdit = document.querySelector('.profile__edit');
@@ -7,7 +10,7 @@ const formProfileEdit = document.querySelector('.popupEdit__form');
 const nameInput = formProfileEdit.querySelector('.popup__input_type_name');
 const aboutInput = formProfileEdit.querySelector('.popup__input_type_about');
 
-function openPopup (popup) {
+export function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupEsc);
 }
@@ -41,45 +44,30 @@ const placeElement = formElementAdd.querySelector('.popup__input_type_place');
 const linkElement = formElementAdd.querySelector('.popup__input_type_link');
 const elementList = document.querySelector('.element');
 const elementTemplate = document.querySelector('#element-template');
-const popupImage = document.querySelector('.popupImage');
-const popupImagePlace = document.querySelector('.popupImage__place');
-const popupImageImage = document.querySelector('.popupImage__image');
+export const popupImage = document.querySelector('.popupImage');
+export const popupImagePlace = document.querySelector('.popupImage__place');
+export const popupImageImage = document.querySelector('.popupImage__image');
 
 buttonOpenAdd.addEventListener('click', () => openPopup(popupAdd));
-
-function create (element) {
-  const elementCopy = elementTemplate.content.cloneNode('true');
-  elementCopy.querySelector('.element__title').textContent = element.name;
-  elementCopy.querySelector('.element__image').src = element.link;
-  elementCopy.querySelector('.element__image').alt = element.name;
-  //удаление элементов
-  elementCopy.querySelector('.element__trash').addEventListener('click', function (elementDelete) {elementDelete.target.closest('.element__list').remove();});
-  //добавление лайков
-  elementCopy.querySelector('.element__like').addEventListener('click', function (elementLike) {elementLike.target.classList.toggle('element__like_active');});
-  //открытие картинки
-  elementCopy.querySelector('.element__image').addEventListener('click', function () {
-    openPopup(popupImage);
-    popupImagePlace.textContent = element.name;
-    popupImageImage.src = element.link;
-    popupImageImage.alt = element.name;
-  });
-
-  return elementCopy;
-}
 
 function handleElementSubmit (evt) {
   evt.preventDefault();
   const elementNew = {};
   elementNew.name = placeElement.value;
   elementNew.link = linkElement.value;
-  elementList.prepend(create(elementNew));
+  elementList.prepend(addElement(elementNew));
   evt.target.reset();
   evt.submitter.classList.add('popup__button_inactive');
-  evt.submitter.disabled = true; 
+  evt.submitter.disabled = true;
   closePopup(popupAdd);
 }
 
 formElementAdd.addEventListener('submit', handleElementSubmit);
+
+function addElement(data) {
+  const card = new Card(data, '#element-template');
+  return card.create();
+}
 
 //добавление начальных элементов
 const initialCards = [
@@ -110,7 +98,7 @@ const initialCards = [
 ]; 
 
 function initialElements (element) {
-  const initialElement = create(element);
+  const initialElement = addElement(element);
   elementList.prepend(initialElement);
 };
 
@@ -143,3 +131,18 @@ function closePopupOutside (evt) {
 popupEdit.addEventListener('click', closePopupOutside);
 popupAdd.addEventListener('click', closePopupOutside);
 popupImage.addEventListener('click', closePopupOutside);
+
+const selectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  invalidSubmitButtonClass: 'popup__button_inactive',
+  inputErrorClass: 'popup__input_error',
+  activeErrorClass: 'popup__error_active'
+};
+
+const formProfileEditValidator = new FormValidator(selectors, formProfileEdit);
+formProfileEditValidator.enableValidation();
+
+const formElementAddValidator = new FormValidator(selectors, formElementAdd);
+formElementAddValidator.enableValidation();
