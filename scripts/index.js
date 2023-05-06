@@ -1,5 +1,5 @@
-import {Card} from "./card.js";
-import {FormValidator} from "./formValidator.js";
+import {Card} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
 
 //изменение имени
 const popupEdit = document.querySelector('.popupEdit');
@@ -26,7 +26,7 @@ function openPopupEdit () {
   aboutInput.value = profileAbout.textContent;
 }
 
-function handleFormSubmit (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAbout.textContent = aboutInput.value;
@@ -34,7 +34,7 @@ function handleFormSubmit (evt) {
 }
 
 buttonOpenEdit.addEventListener('click', openPopupEdit);
-formProfileEdit.addEventListener('submit', handleFormSubmit);
+formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
 
 //изменение элементов
 const popupAdd = document.querySelector('.popupAdd');
@@ -57,8 +57,7 @@ function handleElementSubmit (evt) {
   elementNew.link = linkElement.value;
   elementList.prepend(addElement(elementNew));
   evt.target.reset();
-  evt.submitter.classList.add('popup__button_inactive');
-  evt.submitter.disabled = true;
+  formElementAddValidator.resetValidation();
   closePopup(popupAdd);
 }
 
@@ -97,17 +96,17 @@ const initialCards = [
   }
 ]; 
 
-function initialElements (element) {
+function renderInitialElements (element) {
   const initialElement = addElement(element);
   elementList.prepend(initialElement);
 };
 
-initialCards.forEach(initialElements);
+initialCards.forEach(renderInitialElements);
 
 // находим все крестики проекта по универсальному селектору
-const buttonClose = document.querySelectorAll('.popup__close');
+const closeButtons = document.querySelectorAll('.popup__close');
 
-buttonClose.forEach((button) => {
+closeButtons.forEach((button) => {
   // находим 1 раз ближайший к крестику попап 
   const popup = button.closest('.popup');
   // устанавливаем обработчик закрытия на крестик
@@ -123,8 +122,7 @@ function closePopupEsc (evt) {
 
 function closePopupOutside (evt) {
   if (evt.target.classList.contains('popup')) {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
+    closePopup(evt.target);
   }
 }
 
