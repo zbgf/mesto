@@ -11,8 +11,8 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   };
 
-  _deleteCard (evt) {
-    evt.target.closest('.element__list').remove();
+  _deleteCard () {
+    this._elementList.remove();
   };
 
   _toggleLike (evt) {

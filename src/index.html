@@ -9,13 +9,13 @@
 <body class="body">
 
   <header class="header">
-    <img class="header__logo" src="./images/head/logo.svg" alt="логотип">
+    <img class="header__logo" src=<%=require('./images/head/logo.svg')%> alt="логотип">
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__title">
-        <img class="profile__image" src="./images/profile/profile.jpg" alt="аватар">
+        <img class="profile__image" src=<%=require('./images/profile/profile.jpg')%> alt="аватар">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit button" type="button"></button>
