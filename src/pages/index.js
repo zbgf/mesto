@@ -46,6 +46,7 @@ const popupFormProfilEdit = new PopupWithForm('.popupEdit', data => {
       userInfo.setUserInfo(data);
       popupFormProfilEdit.close();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
     .finally(() => {
       popupFormProfilEdit.returnMainText();
     })
@@ -69,10 +70,12 @@ const createCard = (data) => {
     handleCardOpenImage: (name, image) => {popupImage.open(name, image)},
     handleCardDelete: (cardElement, cardId) => {popupWithConfirmationDelete.open(cardElement, cardId)},
     handleCardAddLike: (cardId) => {api.addLike(cardId)
-        .then((res) => {cardItem.toggleLike(res)})
+      .then((res) => {cardItem.toggleLike(res)})
+      .catch(err => console.log(`Ошибка.....: ${err}`))
     },
     handleCardDeleteLike: (cardId) => {api.deleteLike(cardId)
-        .then((res) => {cardItem.toggleLike(res)})
+      .then((res) => {cardItem.toggleLike(res)})
+      .catch(err => console.log(`Ошибка.....: ${err}`))
     },
   }, '#element-template', userId, {cardId: data._id, authorId: data.owner._id,});
   return cardItem.create();
@@ -89,6 +92,7 @@ const popupAdd = new PopupWithForm('.popupAdd', data => {
       cardList.addItem(createCard(card));
       popupAdd.close();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
     .finally(() => {
       popupAdd.returnMainText();
     })
@@ -108,6 +112,7 @@ const popupEditeAvatar = new PopupWithForm('.popupAvatarEdit', data => {
       userInfo.setUserAvatar(data.avatar);
       popupEditeAvatar.close();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
     .finally(() => {
       popupEditeAvatar.returnMainText();
     })
@@ -127,6 +132,7 @@ const popupWithConfirmationDelete = new PopupWithConfirmation('.popupConfirmDele
       cardElement.deleteCard();
       popupWithConfirmationDelete.close();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
   }
 });
 popupWithConfirmationDelete.setEventListeners();
@@ -142,6 +148,7 @@ Promise.all([
     cardList.renderElements(cardElement.reverse());
     userInfo.setUserAvatar(data.avatar);
   })
+  .catch(err => console.log(`Ошибка.....: ${err}`))
 
 
 const formProfileEditValidator = new FormValidator(selectors, formProfileEdit);
